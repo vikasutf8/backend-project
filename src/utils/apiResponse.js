@@ -6,3 +6,6 @@ class ApiResponse {
         this.success =statusCode<400 // this known must
     }
 }
+
+
+export  {ApiResponse};

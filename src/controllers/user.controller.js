@@ -1,8 +1,8 @@
 import {asyncHandler} from '../utils/asyncHandler.js'
 
 const registerUser = asyncHandler(async (req,res,next)=>{
-      res.status(200).json({
-        message :"ok",
+      await res.status(200).json({
+        message :"res.status is not a fuunction",
     })
  
 })

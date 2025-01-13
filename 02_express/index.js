@@ -4,7 +4,27 @@ import express from "express";
 import 'dotenv/config'
 const app =express();
 const port =process.env.PORT; // not just using directly issue on deployment
+import logger from "./logger.js";
+import morgan from "morgan";
 
+const morganFormat = ":method :url :status :response-time ms"; // customized according our requirements
+
+//morgan middle ware
+app.use(
+    morgan(morganFormat, {
+      stream: {
+        write: (message) => {
+          const logObject = {
+            method: message.split(" ")[0],
+            url: message.split(" ")[1],
+            status: message.split(" ")[2],
+            responseTime: message.split(" ")[3],
+          };
+          logger.info(JSON.stringify(logObject));
+        },
+      },
+    })
+  );
 
 // app.get("/",(req,res)=>{
 //     res.send("Hello it Express framework with Get request")
@@ -54,5 +74,7 @@ app.get("/teas/:id",(req,res)=>{
 })
 
 app.listen(port,()=>{
+    // logger.info("This is an info message");
+    // logger.error("This is an info message");
     console.log(`Server is running at port ${port}...`)
 })

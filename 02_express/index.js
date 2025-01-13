@@ -1,7 +1,9 @@
 import express from "express";
-
+// import dotenv from "dotenv"
+// dotenv.config();
+import 'dotenv/config'
 const app =express();
-const port =3000;
+const port =process.env.PORT; // not just using directly issue on deployment
 
 
 // app.get("/",(req,res)=>{

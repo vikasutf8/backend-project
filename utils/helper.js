@@ -1,0 +1,23 @@
+import { supportedMimes } from "../config/fileSystem.js";
+import { v4 as uuidv4 } from 'uuid';
+export const imageValidator =(size,mine)=>{
+
+if(bytesToMb(size) >2){
+    return "Image size should be less than 2MB"
+}
+else if(!supportedMimes(mine)){
+    return "Image type is invalid"
+}
+
+return null;
+
+}
+
+export const bytesToMb=(bytes)=>{
+return bytes/(1024*1024);
+}
+
+
+export const generateReadom =()=>{
+    return uuidv4();
+}

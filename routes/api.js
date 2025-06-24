@@ -3,6 +3,7 @@ import { Router } from "express";
 import AuthController from "../controllers/AuthController.js";
 import ProfileController from "../controllers/profileController.js";
 import authMiddleware from "../middlwares/Authenticate.js";
+import NewsController from "../controllers/NewsController.js";
 const router =Router()
 
 
@@ -15,5 +16,12 @@ router.get("/profile",authMiddleware,ProfileController.index)
 router.put("/profile/:id",authMiddleware,ProfileController.update)
 
 
+
+//news controllers
+router.get("/news",NewsController.index)
+router.post("/news",authMiddleware,NewsController.store)
+// router.get("/news/:id",authMiddleware,NewsController.show)
+// router.put("/news/:id",authMiddleware,NewsController.update)    
+// router.delete("/news/:id",authMiddleware,NewsController.destroy)
 
 export default router;

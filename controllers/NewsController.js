@@ -116,7 +116,31 @@ image: "No image uploaded ! Image should be uploaded",
     }
   }
 
-  static async show(req, res) {}
+  static async show(req, res) {
+    const { id } = req.params;
+    const news = await prisma.news.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            profile: true,
+          },
+        },
+      },
+
+    });
+
+    const newsTransform = news ? NewsApiTranform.transform(news) : null;
+
+    return res.json({
+status :201,
+news : newsTransform
+    })
+  }
   static async update(req, res) {}
 
   static async distory(req, res) {}

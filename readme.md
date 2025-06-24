@@ -1,4 +1,17 @@
-git rm -r --cached node_modules .env
+
+## Chalenges faced:
+1. Added node_module and env in commit and add . like ..but likelly not pushed : as i have to remove that form my "git add " so try below cmd :- 
+~~~git rm -r --cached node_modules .env~~~
+and then again commit 
+
+2. Error of Prisma setup as that "primsa client not  initialized "
+- resolved via :
+// Update your db.config.js file
+import { PrismaClient } from '../generated/prisma/index.js';
+
+- As generally or documtation PrismaClient imported from @prisma/client... but here i faced this issue ..so i try this and its working !!!
+
+ 
 
 
 #### prisma:
@@ -18,4 +31,6 @@ console.log("Issued at (UTC):", new Date(iat * 1000).toUTCString());
 console.log("Expires at (UTC):", new Date(exp * 1000).toUTCString());
 
 ### Tech
+
 - for validation : vineJs library
+- File handling : ThunderClient extension not support file upload at based form ..its need paid version of that

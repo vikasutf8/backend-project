@@ -21,3 +21,7 @@ return bytes/(1024*1024);
 export const generateReadom =()=>{
     return uuidv4();
 }
+
+export const getImageUrl=   (ImageName)=>{
+return  `${process.env.APP_URL_HTTP}/images/${ImageName}`;
+}   

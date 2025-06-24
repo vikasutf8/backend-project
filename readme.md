@@ -30,7 +30,12 @@ const exp = 1750767223;
 console.log("Issued at (UTC):", new Date(iat * 1000).toUTCString());
 console.log("Expires at (UTC):", new Date(exp * 1000).toUTCString());
 
+#### Pagination 
+1. offset pagenation
+2. curser pagenation
+
 ### Tech
 
 - for validation : vineJs library
 - File handling : ThunderClient extension not support file upload at based form ..its need paid version of that
+    - ApiTransform or DTO(springBoot) ..what we have to show in response

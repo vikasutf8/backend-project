@@ -9,6 +9,7 @@ const app =express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use(express.static("public")) // as any data present in public folder should be served as GET like as image localhost+path+name is urls 
 app.use("/api/v1",apiRoute)
 
 app.get("/", (req, res) => {

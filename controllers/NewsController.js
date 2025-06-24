@@ -1,13 +1,52 @@
 import vine,{errors} from "@vinejs/vine";
 import { newsSchemaValidator } from "../validations/newsValidation.js";
 import { imageValidator, generateReadom } from "../utils/helper.js";
+import NewsApiTranform from "../tranform/newsApiTranform";
 
 
 class NewsController {
   static async index(req, res) {
     try {
-        const news =await prisma.news.findMany({});
-        return res.json({status :200, data:news})
+
+        const page = Number(req.query.page) || 1 //?page=3
+        const limit =Number(req.query.limit) ||10 // ?limit=1
+
+        if(page <1){
+            page =1
+        }
+        if(limit <1 || limit >100){
+            limit=10;
+        }
+// offest :how much take from start and how much skip from end
+        const skip =(page-1)*limit ;
+
+
+        const news =await prisma.news.findMany({
+            take :limit ,
+            skip :skip,
+            include:{
+                user :{
+                    select:{
+                        id:true,
+                        name:true,
+                        profile:true
+                    }
+                }
+            }
+        });
+
+        const newsTransform =news?.map((item)=>NewsApiTranform.transform(item));
+
+        const totalNews =await prisma.news.count();
+        const totalPages =Math.ceil(totalNews/limit);
+
+        return res.json({status :200, data:news,news:newsTransform,
+            metadata:{
+                totalPages,
+                currentPage:page,
+                currentLimit: limit
+            }
+        })
     } catch (error) {
         
     }

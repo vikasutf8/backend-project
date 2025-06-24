@@ -22,4 +22,18 @@ model Users {
   profile  String?
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
+   news News[]
+}
+
+
+// user has many news || news belongs to user
+model News{
+  id       Int     @id @default(autoincrement())
+  user_id Int
+  user Users @relation(fields: [user_id], references: [id])
+  title String @db.VarChar(191)
+  content String 
+  image String @db.VarChar(100) //uuid
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }

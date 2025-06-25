@@ -4,6 +4,7 @@ import AuthController from "../controllers/AuthController.js";
 import ProfileController from "../controllers/profileController.js";
 import authMiddleware from "../middlwares/Authenticate.js";
 import NewsController from "../controllers/NewsController.js";
+import redisCache from "../DB/redis.config.js";
 const router =Router()
 
 
@@ -18,7 +19,7 @@ router.put("/profile/:id",authMiddleware,ProfileController.update)
 
 
 //news controllers
-router.get("/news",NewsController.index)
+router.get("/news",redisCache.route({expire: 60*60}) ,NewsController.index)
 router.post("/news",authMiddleware,NewsController.store)
 router.get("/news/:id",NewsController.show)
 router.put("/news/:id",authMiddleware,NewsController.update)    

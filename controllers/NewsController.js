@@ -7,6 +7,7 @@ import {
   removeImage,
 } from "../utils/helper.js";
 import NewsApiTranform from "../tranform/newsApiTranform.js";
+import redisCache from "../DB/redis.config.js";
 
 
 
@@ -95,6 +96,11 @@ class NewsController {
 
       const news = await prisma.news.create({
         data: payload,
+      });
+
+      // remove cache
+      redisCache.del("/api/v1/news",(err)=>{
+        if(err) throw err ;
       });
 
       return res.json({

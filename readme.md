@@ -40,4 +40,7 @@ console.log("Expires at (UTC):", new Date(exp * 1000).toUTCString());
 - File handling : ThunderClient extension not support file upload at based form ..its need paid version of that
     - ApiTransform or DTO(springBoot) ..what we have to show in response
 -  helmet and cors
-- rate limiting :express-rate-limit
+- rate limiting :express-rate-limit :-ddos attack protection 
+- caching : redis :- 
+~~~docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest~~~
+~~~http://localhost:8001/redis-stack/browser~~~

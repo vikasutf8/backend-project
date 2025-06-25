@@ -8,6 +8,7 @@ import {
 } from "../utils/helper.js";
 import NewsApiTranform from "../tranform/newsApiTranform.js";
 import redisCache from "../DB/redis.config.js";
+import logger from "../config/logger.js";
 
 
 
@@ -58,7 +59,13 @@ class NewsController {
           currentLimit: limit,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      logger.error(error?.message);
+      return res.status(500).json({
+        status: 500,
+        message: "Internal Server Error !Please try again later",
+      });
+    }
   }
 
   static async store(req, res) {
@@ -109,7 +116,7 @@ class NewsController {
         message: "News created successfully",
       });
     } catch (error) {
-      console.log(error);
+      logger.error(error?.message);
       if (error instanceof errors.E_VALIDATION_ERROR) {
         // console.log(error.messages)
         return res.status(400).json({
@@ -125,7 +132,8 @@ class NewsController {
   }
 
   static async show(req, res) {
-    const { id } = req.params;
+    try {
+      const { id } = req.params;
     const news = await prisma.news.findUnique({
       where: {
         id: Number(id),
@@ -147,6 +155,13 @@ class NewsController {
       status: 201,
       news: newsTransform,
     });
+    } catch (error) {
+      logger.error(error?.message);
+      return res.status(500).json({
+        status: 500,
+        message: "Internal Server Error !Please try again later",
+      });
+    }
   }
 
   static async update(req, res) {
@@ -202,7 +217,7 @@ class NewsController {
         data: payload,
       });
     } catch (error) {
-      console.log(error);
+      logger.error(error?.message);
       if (error instanceof errors.E_VALIDATION_ERROR) {
         // console.log(error.messages)
         return res.status(400).json({
@@ -248,7 +263,7 @@ class NewsController {
         message: "News deleted successfully",
       });
     } catch (error) {
-      console.log(error);
+      logger.error(error?.message);
       if (error instanceof errors.E_VALIDATION_ERROR) {
         // console.log(error.messages)
         return res.status(400).json({

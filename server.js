@@ -5,6 +5,7 @@ import fileUpload from "express-fileupload";
 import helmet from "helmet";
 import cors from "cors";
 import { limiter } from "./config/rateLimiter.js";
+import logger from "./config/logger.js";
 const PORT=  process.env.Port || 4000
 const app =express();
 
@@ -28,6 +29,9 @@ app.get("/", (req, res) => {
     status:200,
     message: "Hello World" });
 });
+
+//logger
+logger.info("Server is running on port 4000");
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

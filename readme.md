@@ -44,3 +44,8 @@ console.log("Expires at (UTC):", new Date(exp * 1000).toUTCString());
 - caching : redis :- 
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 http://localhost:8001/redis-stack/browser
+
+- logger : should @3.17.0 version of winston
+    - level :kis type of log store karna ha
+    - format :kis format like json,txt of log store karna ha
+    - transports :konsi file me store karna ha locations

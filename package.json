@@ -21,7 +21,9 @@
     "express": "^5.1.0",
     "express-fileupload": "^1.5.1",
     "express-jwt": "^8.5.1",
+    "express-rate-limit": "^7.5.1",
     "fs": "^0.0.1-security",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "uuid": "^11.1.0"
   },

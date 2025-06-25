@@ -49,3 +49,8 @@ http://localhost:8001/redis-stack/browser
     - level :kis type of log store karna ha
     - format :kis format like json,txt of log store karna ha
     - transports :konsi file me store karna ha locations
+- email service : nodemailer and https://app.brevo.com/
+- Queue :BullMq ::
+- import { Queue , Worker} from "bullmq";
+    - Queue :- redis me entry karna
+    - Worker :- redis me already entry ko use karna and processs karna

@@ -33,6 +33,11 @@ app.get("/", (req, res) => {
 //logger
 logger.info("Server is running on port 4000");
 
+//worker queue
+
+import "./queueJobs/index.js";
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

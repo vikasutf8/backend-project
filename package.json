@@ -26,7 +26,8 @@
     "fs": "^0.0.1-security",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "winston": "^2.4.6"
   },
   "devDependencies": {
     "prisma": "^6.10.1"

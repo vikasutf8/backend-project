@@ -1,10 +1,10 @@
 
 ## Chalenges faced:
-1. Added node_module and env in commit and add . like ..but likelly not pushed : as i have to remove that form my "git add " so try below cmd :- 
+1.Added node_module and env in commit and add . like ..but likelly not pushed : as i have to remove that form my "git add " so try below cmd :- 
 ~~~git rm -r --cached node_modules .env~~~
 and then again commit 
 
-2. Error of Prisma setup as that "primsa client not  initialized "
+2.Error of Prisma setup as that "primsa client not  initialized "
 - resolved via :
 // Update your db.config.js file
 import { PrismaClient } from '../generated/prisma/index.js';

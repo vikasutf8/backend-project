@@ -1,7 +1,7 @@
 
 ## Chalenges faced:
 1.Added node_module and env in commit and add . like ..but likelly not pushed : as i have to remove that form my "git add " so try below cmd :- 
-~~~git rm -r --cached node_modules .env~~~
+git rm -r --cached node_modules .env
 and then again commit 
 
 2.Error of Prisma setup as that "primsa client not  initialized "
@@ -42,5 +42,5 @@ console.log("Expires at (UTC):", new Date(exp * 1000).toUTCString());
 -  helmet and cors
 - rate limiting :express-rate-limit :-ddos attack protection 
 - caching : redis :- 
-~~~docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest~~~
-~~~http://localhost:8001/redis-stack/browser~~~
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+http://localhost:8001/redis-stack/browser

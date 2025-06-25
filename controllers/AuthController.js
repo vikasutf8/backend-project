@@ -123,11 +123,23 @@ class AuthController {
   static async sendTestEmail(req,res){
     try {
       const {email} =req.query;
-      const payload={
+      const payload=[
+        {
         toEmail : email,
         subject : "Test Email", 
         html : "<h1>Hello World ! I am Test Email</h1>"
+      },
+      {
+        toEmail : email,
+        subject : "Test Email1", 
+        html : "<h1>Hello World ! I am Test Email 1</h1>"
+      },
+      {
+        toEmail : email,
+        subject : "Test sfdasfEmail 2", 
+        html : "<h1>Hello World ! I am Test Email 2</h1>"
       }
+      ]
       // await sendEmail(payload.toEmail,payload.subject,payload.html);
       await emailQueue.add(emailQueueName,payload)
       return res.json({

@@ -15,6 +15,10 @@ export const emailQueue = new Queue(emailQueueName,{
 export const handler = new Worker(emailQueueName, async (job) => {
     // handling 1000s of mails at once
   console.log("Email Worker is running", job.data);
+  const data =job.data;
+  data?.map(async (email)=>{
+      await sendEmail(email.toEmail,email.subject,email.html);
+  })
   
 },{connection: redisConnection,});
 

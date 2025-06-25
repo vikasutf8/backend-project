@@ -6,6 +6,8 @@ import {
   LoginSchemaValidator,
 } from "../validations/AuthValidation.js";
 import jwt from "jsonwebtoken";
+import { sendEmail } from "../config/mailer.config.js";
+import logger from "../config/logger.js";
 
 class AuthController {
   static async register(req, res) {
@@ -114,6 +116,28 @@ class AuthController {
           message: "Internal Server Error !Please try again later",
         });
       }
+    }
+  }
+
+  static async sendTestEmail(req,res){
+    try {
+      const {email} =req.query;
+      const payload={
+        toEmail : email,
+        subject : "Test Email", 
+        html : "<h1>Hello World ! I am Test Email</h1>"
+      }
+      await sendEmail(payload.toEmail,payload.subject,payload.html);
+      return res.json({
+        status: 200,
+        message: "Email sent successfully",
+      });
+    } catch (error) {
+      logger.error({type:"Email Error",body:error?.message});
+      return res.status(500).json({
+        status: 500,
+        message: "Internal Server Error !Please try again later",
+      });
     }
   }
 }

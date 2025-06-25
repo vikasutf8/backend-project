@@ -1,3 +1,14 @@
+## What We Learnt 
+- Nodejs via Express.js
+     - authentication :jwt, bcrypt, validator(zod <==> vine)
+     - CURD :
+     - File handling express.js as path link and unlinked
+     - redis that faster cache : docker image 
+     - paggenation
+     - nodemailer - worst
+     - queue via redis
+     - prisma ORM 
+
 
 ## Chalenges faced:
 1.Added node_module and env in commit and add . like ..but likelly not pushed : as i have to remove that form my "git add " so try below cmd :- 
@@ -50,7 +61,7 @@ http://localhost:8001/redis-stack/browser
     - format :kis format like json,txt of log store karna ha
     - transports :konsi file me store karna ha locations
 - email service : nodemailer and https://app.brevo.com/
-- Queue :BullMq ::
+- Queue :BullMq :: always connected with redis 
 - import { Queue , Worker} from "bullmq";
     - Queue :- redis me entry karna
     - Worker :- redis me already entry ko use karna and processs karna

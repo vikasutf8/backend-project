@@ -21,7 +21,7 @@ router.put("/profile/:id",authMiddleware,ProfileController.update)
 router.get("/news",NewsController.index)
 router.post("/news",authMiddleware,NewsController.store)
 router.get("/news/:id",NewsController.show)
-// router.put("/news/:id",authMiddleware,NewsController.update)    
-// router.delete("/news/:id",authMiddleware,NewsController.destroy)
+router.put("/news/:id",authMiddleware,NewsController.update)    
+router.delete("/news/:id",authMiddleware,NewsController.distory)
 
 export default router;

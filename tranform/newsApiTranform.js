@@ -3,6 +3,7 @@ import { getImageUrl } from "../utils/helper.js";
 
 
 class NewsApiTranform{
+    
     static transform(news){
         return{
             id:news.id,
